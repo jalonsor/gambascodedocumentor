@@ -1,0 +1,59 @@
+' Gambas class file
+
+
+Export
+
+
+'' **** Constantes y Utilidades para el Parser
+
+''http://www.freevbcode.com/ShowCode.asp?ID=8701
+
+'' *** NodeType Constants:	http://www.w3schools.com/jsref/prop_node_nodetype.asp
+Public Const NODETYPE_ELEMENT As Byte = 1 	''Represents an element
+Public Const NODETYPE_ATTRIBUTE As Byte = 2 	''Represents an attribute
+Public Const NODETYPE_TEXT As Byte = 3 	''Represents textual content in an element or attribute
+Public Const NODETYPE_CDATA As Byte = 4 	''Represents a CDATA section in a document (text that will NOT be parsed by a parser)
+Public Const NODETYPE_ENTITY_REFERENCE As Byte = 5 	''Represents an entity reference
+Public Const NODETYPE_ENTITY As Byte = 6 	''Represents an entity
+Public Const NODETYPE_PROCESSING_INSTRUCTION As Byte = 7 	''Represents a processing instruction
+Public Const NODETYPE_COMMENT As Byte = 8 	''Represents a comment
+Public Const NODETYPE_DOCUMENT As Byte = 9 	''Represents the entire document (the root-node of the DOM tree)
+Public Const NODETYPE_DOCUMENT_TYPE As Byte = 10 	''Provides an interface to the entities defined for the document
+Public Const NODETYPE_DOCUMENT_FRAGMENT As Byte = 11 	''Represents a "lightweight" Document object, which can hold a portion of a document
+Public Const NODETYPE_NOTATION As Byte = 12 	''Represents a notation declared in the DTD
+
+
+Private $HtmlTagsNotChild As Collection = [
+  "!--": True,
+  "!doctype": True,
+  "area": True,
+  "base": True,
+  "br": True,
+  "col": True,
+  "command": True,
+  "embed": True,
+  "hr": True,
+  "img": True,
+  "input": True,
+  "keygen": True,
+  "link": True,
+  "meta": True,
+  "param": True,
+  "source": True,
+  "track": True,
+  "wbr": True]
+
+Private $asciiTable As Collection '_HTMAsciiSymbol[]. http://ascii.cl/es/codigos-html.htm
+
+
+
+Public Function tagCanHaveChild(strTag As String) As Boolean
+  If $HtmlTagsNotChild[strTag] = True Then Return False 	''No puede tener hijos
+  Return True 	''Si puede tener hijos
+End
+
+
+
+
+
+
