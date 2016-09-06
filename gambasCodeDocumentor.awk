@@ -35,8 +35,8 @@ FILENAME !="" && swInfoFilename==0{
 	}
 	
 	strClassModuleINFO=strClassModuleINFO "\n\n''*************************************************************************\n";
-	strClassModuleINFO=strClassModuleINFO "''@NAME:" FILENAME "\n";
-	strClassModuleINFO=strClassModuleINFO "''@MEMBERTYPE" strMemberType "\n";
+	strClassModuleINFO=strClassModuleINFO "''@CLASSNAME:" FILENAME "\n";
+	strClassModuleINFO=strClassModuleINFO "''@MEMBERTYPE:" strMemberType "\n";
 	strClassModuleINFO=strClassModuleINFO "''@VERSION:XX.XX.XX[A|B]\n";
 	strClassModuleINFO=strClassModuleINFO "''@EXPLANATION:\n";
 	strClassModuleINFO=strClassModuleINFO "''@EXPLANATION:\n";
