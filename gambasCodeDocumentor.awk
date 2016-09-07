@@ -35,8 +35,8 @@ FILENAME !="" && swInfoFilename==0{
 	}
 	
 	strClassModuleINFO=strClassModuleINFO "\n\n''*************************************************************************\n";
-	strClassModuleINFO=strClassModuleINFO "''@CLASSNAME:" FILENAME "\n";
 	strClassModuleINFO=strClassModuleINFO "''@MEMBERTYPE:" strMemberType "\n";
+	strClassModuleINFO=strClassModuleINFO "''@CLASSNAME:" FILENAME "\n";
 	strClassModuleINFO=strClassModuleINFO "''@VERSION:XX.XX.XX[A|B]\n";
 	strClassModuleINFO=strClassModuleINFO "''@EXPLANATION:\n";
 	strClassModuleINFO=strClassModuleINFO "''@EXPLANATION:\n";
@@ -78,9 +78,10 @@ FILENAME !="" && swInfoFilename==0{
 	#strVarType=$2;
 	strName=$3;
 	
-	strDoc="\n\n''@DECL:" strDec "\n";
+	strDoc="";
+	strDoc=strDoc "\n\n''@MEMBERTYPE:Constant\n";	#Constant, Property, Variable, Method ....
+	strDoc=strDoc "''@DECL:" strDec "\n";
 	strDoc=strDoc "''@NAME:" strName "\n";
-	strDoc=strDoc "''@MEMBERTYPE:Constant\n";	#Constant, Property, Variable, Method ....
 	strDoc=strDoc "''@ACCESS:" strAccess "\n";			#Private, Public
 	strDoc=strDoc "''@VARTYPE:" strVarType "\n";		#Static ...
 	strDoc=strDoc "''@DATATYPE:" strDataType "\n";	#Byte, Integer, Object ...
@@ -123,10 +124,11 @@ FILENAME !="" && swInfoFilename==0{
 		strName=$3;
 	else
 		strName=$4;
-		
-	strDoc="\n\n''@DECL:" strDec "\n";
+	
+	strDoc="";
+	strDoc=strDoc "\n\n''@MEMBERTYPE:Property ReadOnly\n";	#Constant, Property, Variable, Method ....
+	strDoc=strDoc "''@DECL:" strDec "\n";
 	strDoc=strDoc "''@NAME:" strName "\n";
-	strDoc=strDoc "''@MEMBERTYPE:Property ReadOnly\n";	#Constant, Property, Variable, Method ....
 	strDoc=strDoc "''@ACCESS:" strAccess "\n";			#Private, Public
 	strDoc=strDoc "''@VARTYPE:" strVarType "\n";		#Static ...
 	strDoc=strDoc "''@DATATYPE:" strDataType "\n";	#Byte, Integer, Object ...
@@ -169,10 +171,11 @@ FILENAME !="" && swInfoFilename==0{
 		strName=$2;
 	else
 		strName=$3;
-		
-	strDoc="\n\n''@DECL:" strDec "\n";
+	
+	strDoc="";
+	strDoc=strDoc "\n\n''@MEMBERTYPE:Property ReadWrite\n";	#Constant, Property, Variable, Method ....
+	strDoc=strDoc "''@DECL:" strDec "\n";
 	strDoc=strDoc "''@NAME:" strName "\n";
-	strDoc=strDoc "''@MEMBERTYPE:Property ReadWrite\n";	#Constant, Property, Variable, Method ....
 	strDoc=strDoc "''@ACCESS:" strAccess "\n";			#Private, Public
 	strDoc=strDoc "''@VARTYPE:" strVarType "\n";		#Static ...
 	strDoc=strDoc "''@DATATYPE:" strDataType "\n";	#Byte, Integer, Object ...
@@ -221,9 +224,10 @@ FILENAME !="" && swInfoFilename==0{
 		strName=$3;
 	}
 		
-	strDoc="\n\n''@DECL:" strDec "\n";
+	strDoc="";
+	strDoc=strDoc "\n\n''@MEMBERTYPE:Variable\n";	#Constant, Property, Variable, Method ....
+	strDoc=strDoc "''@DECL:" strDec "\n";
 	strDoc=strDoc "''@NAME:" strName "\n";
-	strDoc=strDoc "''@MEMBERTYPE:Variable\n";	#Constant, Property, Variable, Method ....
 	strDoc=strDoc "''@ACCESS:" strAccess "\n";			#Private, Public
 	strDoc=strDoc "''@VARTYPE:" strVarType "\n";		#Static ...
 	strDoc=strDoc "''@DATATYPE:" strDataType "\n";	#Byte, Integer, Object ...
@@ -306,10 +310,10 @@ FILENAME !="" && swInfoFilename==0{
 	}
 	gsub(/\(.*/, "", strName);	#Clean Method Name.
 	
-	
-	strDoc="\n\n''@DECL:" strDec "\n";
+	strDoc="";
+	strDoc=strDoc "\n\n''@MEMBERTYPE:Method\n";					#Constant, Property, Variable, Method ....
+	strDoc=strDoc "''@DECL:" strDec "\n";
 	strDoc=strDoc "''@NAME:" strName "\n";
-	strDoc=strDoc "''@MEMBERTYPE:Method\n";					#Constant, Property, Variable, Method ....
 	strDoc=strDoc "''@ACCESS:" strAccess "\n";				#Private, Public
 	strDoc=strDoc "''@METHODTYPE:" strVarType "\n";		#Static ...
 	strDoc=strDoc "''@RETURNTYPE:" strDataType "\n";	#Byte, Integer, Object ...
