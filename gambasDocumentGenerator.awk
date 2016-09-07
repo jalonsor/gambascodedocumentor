@@ -10,60 +10,88 @@ BEGIN{
 	
 	arrFiles[0]="index.html";
 	
-	
-	
 	fileNameAnt="";
+	outFileName="";
 	swInfoFilename=0; # 0--> No filename info proccesed. 1--> Filename info proccesed.
+	
+	nMembers=0;	#Number of members procesed.
+	
+	
+	strMEMBERTYPE="";
+	strACCESS="";
+	strCLASSNAME="";
+	strCODECOMMENT="";
+	strDATATYPE="";
+	strDECL="";
+	strDEFVAL="";
+	strEXAMPLE="";
+	strEXPLANATION="";
+	strMETHODTYPE="";
+	strNAME="";
+	strPARAM="";
+	strRETURNTYPE="";
+	strVARTYPE="";
+	strVERSION="";
+	
 }
-
-#~ @CLASSNAME:
-#~ @NAME:" FILENAME "\n";
-#~ @MEMBERTYPE" strMemberType "\n";
-#~ @VERSION:XX.XX.XX[A|B]\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:\n";
-
-#~ @DECL:" strDec "\n";
-#~ @NAME:" strName "\n";
-#~ @MEMBERTYPE:Constant\n";	#Constant, Property, Variable, Method ....
-#~ @ACCESS:" strAccess "\n";			#Private, Public
-#~ @VARTYPE:" strVarType "\n";		#Static ...
-#~ @DATATYPE:" strDataType "\n";	#Byte, Integer, Object ...
-#~ @DEFVAL:" strDefVal "\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @EXPLANATION:\n";
-#~ @CODECOMMENT:" strCodeComment "\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:\n";
-#~ @EXAMPLE:";
-
-#~ @METHODTYPE:" strVarType "\n";		#Static ...
-#~ @RETURNTYPE:" strDataType "\n";	#Byte, Integer, Object ...
-
+	
 FILENAME !="" && FILENAME !=fileNameAnt{
 	arrFiles[length(arrFiles)]=trim(FILENAME);
+	outFileName=arrFiles[length(arrFiles)-1];
 	
+	
+	
+	#****TODO: Build FILENAME.html
+	
+	
+	
+
 	fileNameAnt=FILENAME;
 }
-
-/^[ \t]*''(@[A-Z]+):/{
-	strDirectiva="";
+/''@MEMBERTYPE:/{	#First Meta of each member ....
 	
+	
+	
+	
+	
+	
+	if(nMembers>0)	##If There is DATA .... 
+	{
+		
+		#TODO: Print The metas ...
+	
+		#**** Initialize variables
+		strMEMBERTYPE="";
+		strACCESS="";
+		strCLASSNAME="";
+		strCODECOMMENT="";
+		strDATATYPE="";
+		strDECL="";
+		strDEFVAL="";
+		strEXAMPLE="";
+		strEXPLANATION="";
+		strMETHODTYPE="";
+		strNAME="";
+		strPARAM="";
+		strRETURNTYPE="";
+		strVARTYPE="";
+		strVERSION="";
+	}
+
+	next;	#Next File Record
+}
+
+/^[ \t]*''(@[A-Z]+):/{	#Each Meta ....
+	strDirectiva="";
 	if(match($0, /''(@[A-Z]+):/)>0)
 		strDirectiva=trim(substr($0, RSTART+2, RLENGTH-3));
+		
+		
 	
 	print "=====>" strDirectiva;
 }
 
 END{
-	
+	#***TODO: Build index in index.html.
+	#asort(arrFiles)	# Sorts the index
 }
