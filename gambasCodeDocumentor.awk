@@ -52,6 +52,12 @@ FILENAME !="" && swInfoFilename==0{
 	strMemberType="";
 }
 
+/^[ \t]*(CLASS |CREATE STATIC *|CREATE PRIVATE *|EXPORT *|FAST *|INHERITS |USE )/ && swInfoFilename==1 && swInfoFilePrinted==0{ 
+	#Class or Module Options .... Fast, Inherits, Class, Static, Etc ... (http://gambaswiki.org/wiki/cat/object)
+	
+	
+}
+
 # *** First Code line after, inherits, Create, etc ...
 /^[ \t]*(property |Private |Public |static |function |sub |procedure )/ && swInfoFilename==1 && swInfoFilePrinted==0{
 	print strClassModuleINFO;
